@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    
+    *{
+        padding:0;
+        margin: 0;
+        font-family: 'Outfit', sans-serif;
+        box-sizing: border-box;
+        text-decoration: none;
+    }
+
+    body{
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #31285C;
+            padding-top: 20px;
+        }
+
+    .wrapper{
+            width: 1200px;
+            min-height:600px;
+            background-color: #FFFFFF;
+            border-radius: 5px;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+        }
+
+    h1{
+            color:#e8e8ed;
+            position: absolute;
+            top:0;
+            left:0; 
+            margin-bottom:20px;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+    button{
+            width: 120px;
+            height: 40px;
+            border: none;
+            color: #FFFFFF;
+            background-color: #31285C;
+            border-radius: 5px;
+            font-size: 17px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+    
+    .edit-button{
+            width: 80px;
+            height: 20px;
+            border: 5px;
+            color: #FFFFFF;
+            background-color: #31285C;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+    
+
+    .exitbutton{
+        width: 120px;
+        height: 40px;
+        position: absolute;
+        top:0;
+        right:0; 
+        margin-bottom:20px;
+        margin-right: 20px;
+        margin-top: 20px;   
+        color:  #31285C;
+        background-color:#FFFFFF;    
+    }
+    .exitbutton:hover{
+            background-color: #dac6f2;
+    }
+
+    button:hover{
+            background-color: #6e5e80;
+    }
+
+    .input-group{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 40px;
+    }
+    .edit-group{
+        display: flex;
+        justify-content: left;
+        align-items: left;
+        height: 40px;
+    }
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Notes app</title>
+</head>
+
+
+
+<body>
+    <h1 class="heading">Hi {{user}}</h1>
+    <div class="wrapper">
+            <button class="exitbutton" onclick="location.href = '/logout';">Logout</button>
+            {%if not pro_license%}
+                <button onclick="location.href = '/get_pro';">Buy Pro Version</button>
+            {%endif%}
+    <div class="input-group">
+        <button onclick="location.href = '/create_todo';"> <b>+</b> Create Note</button>
+    </div>
+
+    <ul class="todo-list">
+        {% for todo in todo_list %}
+        <li class="todo-item">
+            <div class="todo-item-title"><h2>{{ todo.title }}</h2></div>
+            <div class="todo-item-description"><p>{{ todo.description }}</p></div>
+            <div class="todo-item-created_at"><i>Created at:</i> {{ todo.created_at }}</div>
+            {%if pro_license%}
+                <img src="{{ todo.image_url }}" alt="Image">
+            {%endif%}
+            <div class="edit-group">
+                <button class = "edit-button" onclick="location.href = '/update_todo/{{todo.id}}';"> <b></b>Edit</button>
+                <p></p>
+                <button class = "edit-button" onclick="location.href = '/delete_todo/{{todo.id}}';"> <b></b>Delete</button>
+            </div>
+            <br>
+        </li>
+        {% endfor %}
+
+
+</div>
+</body>
+</html>

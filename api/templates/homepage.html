@@ -1,0 +1,109 @@
+<html>
+    <style> 
+            ::selection{
+            color: #ffffff;
+            background-color: #31285C;
+            }
+
+            *{
+            padding:0;
+            margin: 0;
+            font-family: 'Outfit', sans-serif;
+            box-sizing: border-box;
+            text-decoration: none;
+            }
+
+            a{
+            color: #31285C;
+            }
+
+            body{
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #31285C;
+            padding-top: 20px;
+            }
+
+            .wrapper{
+            width: 1200px;
+            min-height:600px;
+            background-color: #FFFFFF;
+            border-radius: 5px;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            }
+
+            .heading{
+            color: #3B3663;
+            margin-bottom: 20px;
+            }
+
+            .heading p{ 
+            color: #AAA8BB;
+            }
+
+            .heading i{
+            font-size: 30px;
+            color: #4D61FC;
+            } 
+
+            button{
+                width: 10%;
+                height: 45px;
+                border: none;
+                color: #FFFFFF;
+                background-color: #31285C;
+                border-radius: 5px;
+                font-size: 17px;
+                font-weight: 500;
+                transition: 0.3s;
+                }
+
+            button:hover{
+                background-color: #6e5e80;
+            }
+
+            .row{
+                min-width: 5px;
+                min-height: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 10px;
+                font-size: 15px;
+            }
+
+
+            .input-group{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 220px;
+         }
+
+
+            
+    </style>
+
+    <body>
+    <div class="wrapper">
+
+        <div class="heading">
+        <h2>Welcome!</h2>
+        <br>
+        </div>
+        <div class ="row">
+            <p>
+                {{description}}
+            </p>
+        </div>
+        <div class="input-group">
+        <button onclick="location.href = '/private';"> Login </button>
+        </div>
+        </div>
+    </body>
+</html>

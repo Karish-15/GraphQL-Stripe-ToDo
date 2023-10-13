@@ -1,0 +1,37 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type ToDo {
+    id: ID!
+    title: String!
+    description: String!
+    created_at: String!
+    pro_license: Boolean!
+    image_url: String!
+    author_id: String!
+}
+
+type TodoResult {
+    success: Boolean!
+    errors: [String]
+    todo: ToDo
+}
+
+type TodosResult {
+    success: Boolean!
+    errors: [String]
+    todos: [ToDo]
+}
+
+type Query {
+    listTodos: TodosResult!
+    getTodo(id: ID!): TodoResult!
+}
+
+type Mutation {
+    createToDo(title: String!, description: String!, image_url: String!): TodosResult!
+    deleteToDo(id: ID): TodosResult!
+    updateToDo(id: ID!, title: String!, description: String!, image_url: String!): TodosResult!
+}
